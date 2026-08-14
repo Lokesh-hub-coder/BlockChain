@@ -1,0 +1,227 @@
+/* ─── Reset ──────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: #f0f4ff;
+  color: #1a1a2e;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── Layout ──────────────────────────────────────────── */
+.page { min-height: 100vh; display: flex; flex-direction: column; }
+
+.site-header {
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid #e2e8f0;
+  box-shadow: 0 1px 3px rgba(0,0,0,.06);
+}
+
+.site-nav {
+  max-width: 1100px; margin: 0 auto;
+  padding: 0.85rem 1.5rem;
+  display: flex; justify-content: space-between; align-items: center;
+}
+
+.site-title { font-size: 1.35rem; font-weight: 800; color: #4f46e5; letter-spacing: -.02em; }
+.site-subtitle { font-size: 0.75rem; color: #6b7280; margin-top: 1px; }
+
+.content-wrap { max-width: 1100px; margin: 0 auto; padding: 2rem 1.5rem 4rem; flex: 1; }
+
+/* ─── Hero ────────────────────────────────────────────── */
+.hero-section { margin-bottom: 2rem; }
+
+.hero-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 2rem 2.5rem;
+  box-shadow: 0 2px 12px rgba(79,70,229,.07);
+}
+
+.hero-headline { font-size: 1.65rem; font-weight: 800; color: #111827; margin-bottom: .75rem; letter-spacing: -.02em; }
+.hero-body { color: #4b5563; line-height: 1.7; max-width: 680px; }
+
+.net-badge {
+  display: inline-block; margin-top: 1rem;
+  padding: .35rem .85rem; border-radius: 999px;
+  font-size: .8rem; font-weight: 600;
+}
+.net-ok   { background: #d1fae5; color: #065f46; }
+.net-warn { background: #fef3c7; color: #92400e; }
+.net-idle { background: #ede9fe; color: #4338ca; }
+
+/* ─── Wrong network ───────────────────────────────────── */
+.wrong-network-banner {
+  background: #fffbeb; border: 1.5px solid #f59e0b;
+  border-radius: 12px; padding: 1.25rem 1.5rem; margin-bottom: 1.5rem;
+}
+.wrong-network-title { font-weight: 700; color: #92400e; margin-bottom: .35rem; }
+.wrong-network-body  { color: #78350f; font-size: .9rem; }
+.faucet-link {
+  display: inline-block; margin-top: .75rem;
+  background: #4f46e5; color: #fff;
+  padding: .45rem 1.1rem; border-radius: 8px;
+  font-size: .85rem; font-weight: 600; text-decoration: none;
+  transition: background .15s;
+}
+.faucet-link:hover { background: #4338ca; }
+
+/* ─── Main grid ───────────────────────────────────────── */
+.main-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+@media (max-width: 768px) { .main-grid { grid-template-columns: 1fr; } }
+
+/* ─── Connect prompt (in tip column when not connected) ─ */
+.connect-prompt {
+  background: #fff; border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(79,70,229,.07);
+  min-height: 260px;
+  display: flex; align-items: center; justify-content: center;
+}
+.connect-prompt-inner { text-align: center; padding: 2rem; }
+.connect-prompt-text { color: #6b7280; font-size: 1rem; margin-bottom: 1.25rem; }
+.connect-btn-wrap { display: flex; justify-content: center; }
+
+/* ─── TipForm card ────────────────────────────────────── */
+.tip-form-card {
+  background: #fff; border-radius: 16px; padding: 2rem;
+  box-shadow: 0 2px 12px rgba(79,70,229,.07);
+}
+.form-title { font-size: 1.25rem; font-weight: 800; color: #111827; margin-bottom: 1.5rem; }
+.tip-form { display: flex; flex-direction: column; gap: 1.25rem; }
+
+.field-group { display: flex; flex-direction: column; gap: .45rem; }
+.field-label { font-size: .85rem; font-weight: 600; color: #374151; }
+.char-count { font-weight: 400; color: #9ca3af; }
+.char-count.warn { color: #ef4444; }
+
+.amount-row { display: flex; gap: .5rem; }
+.amount-input {
+  flex: 1; padding: .7rem 1rem;
+  border: 1.5px solid #d1d5db; border-radius: 10px;
+  font-size: .95rem; outline: none; transition: border-color .15s;
+}
+.amount-input:focus { border-color: #4f46e5; }
+
+.preset-btns { display: flex; gap: .35rem; }
+.preset-btn {
+  padding: .5rem .75rem; border-radius: 8px; border: 1.5px solid #e5e7eb;
+  background: #f9fafb; font-size: .8rem; font-weight: 600; cursor: pointer;
+  transition: all .12s; color: #374151;
+}
+.preset-btn.active,
+.preset-btn:hover:not(:disabled) { background: #ede9fe; border-color: #a5b4fc; color: #4f46e5; }
+.preset-btn:disabled { opacity: .45; cursor: not-allowed; }
+
+.note-input {
+  width: 100%; padding: .7rem 1rem;
+  border: 1.5px solid #d1d5db; border-radius: 10px;
+  font-size: .9rem; resize: none; outline: none; transition: border-color .15s;
+  font-family: inherit;
+}
+.note-input:focus { border-color: #4f46e5; }
+
+/* Status boxes */
+.status-box {
+  display: flex; gap: .75rem; padding: 1rem 1.1rem;
+  border-radius: 10px; align-items: flex-start;
+}
+.status-icon { font-size: 1.2rem; flex-shrink: 0; line-height: 1.4; }
+.status-title { font-weight: 700; font-size: .9rem; margin-bottom: .2rem; }
+.status-body  { font-size: .82rem; line-height: 1.5; }
+
+.status-rejected { background: #f5f3ff; color: #5b21b6; }
+.status-error    { background: #fef2f2; color: #991b1b; }
+.status-info     { background: #eff6ff; color: #1e40af; }
+.status-success  { background: #f0fdf4; color: #14532d; }
+
+/* Submit button */
+.submit-btn {
+  width: 100%; padding: .9rem;
+  background: #4f46e5; color: #fff;
+  border: none; border-radius: 12px;
+  font-size: 1rem; font-weight: 700; cursor: pointer;
+  transition: background .15s, transform .1s;
+}
+.submit-btn:hover:not(.disabled) { background: #4338ca; transform: translateY(-1px); }
+.submit-btn.disabled { background: #9ca3af; cursor: not-allowed; transform: none; }
+
+.form-footnote { font-size: .75rem; color: #9ca3af; text-align: center; }
+
+/* ─── SupporterWall ───────────────────────────────────── */
+.wall-card {
+  background: #fff; border-radius: 16px; padding: 2rem;
+  box-shadow: 0 2px 12px rgba(79,70,229,.07);
+}
+.wall-header {
+  display: flex; justify-content: space-between; align-items: flex-start;
+  margin-bottom: 1.25rem;
+}
+.wall-title { font-size: 1.25rem; font-weight: 800; color: #111827; }
+.wall-stats { text-align: right; }
+.wall-total { display: block; font-size: 1.5rem; font-weight: 800; color: #4f46e5; }
+.wall-count { font-size: .75rem; color: #6b7280; }
+
+.wall-error {
+  background: #fef2f2; color: #991b1b; border-radius: 8px;
+  padding: .75rem 1rem; margin-bottom: 1rem; font-size: .85rem;
+}
+.wall-loading {
+  display: flex; flex-direction: column; align-items: center;
+  gap: .75rem; padding: 2rem 0; color: #6b7280; font-size: .9rem;
+}
+.wall-empty { padding: 2rem 0; text-align: center; color: #6b7280; }
+
+.tip-list { list-style: none; display: flex; flex-direction: column; gap: .75rem; max-height: 480px; overflow-y: auto; }
+
+.tip-card {
+  padding: 1rem 1.1rem; border-radius: 12px;
+  background: linear-gradient(135deg, #f5f3ff 0%, #eff6ff 100%);
+  border-left: 3px solid #6366f1;
+  transition: box-shadow .15s;
+}
+.tip-card:hover { box-shadow: 0 4px 12px rgba(79,70,229,.12); }
+
+.tip-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: .45rem; }
+.address-text { font-family: 'Courier New', monospace; font-size: .85rem; font-weight: 600; color: #374151; }
+.tip-amount { font-weight: 700; color: #4f46e5; font-size: .9rem; }
+.tip-note { color: #374151; font-style: italic; font-size: .85rem; line-height: 1.5; margin-bottom: .45rem; }
+.tip-etherscan { font-size: .75rem; color: #6366f1; text-decoration: none; }
+.tip-etherscan:hover { text-decoration: underline; }
+
+.wall-footnote { font-size: .72rem; color: #9ca3af; text-align: center; margin-top: 1rem; }
+
+/* ─── Footer ──────────────────────────────────────────── */
+.site-footer { margin-top: 2.5rem; text-align: center; font-size: .8rem; color: #9ca3af; }
+
+/* ─── Spinner ─────────────────────────────────────────── */
+.spinner {
+  width: 28px; height: 28px;
+  border: 3px solid #e0e7ff;
+  border-top-color: #6366f1;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+.spin-icon { display: inline-block; animation: spin 1s linear infinite; }
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in { animation: fadeIn 0.25s ease-out; }
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.5; }
+}
+.animate-pulse { animation: pulse 2s cubic-bezier(0.4,0,0.6,1) infinite; }

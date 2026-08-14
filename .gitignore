@@ -1,0 +1,43 @@
+# Node modules
+node_modules/
+frontend/node_modules/
+
+# Build output
+dist/
+bundle/
+frontend/.next/
+frontend/out/
+
+# Hardhat Build Artifacts
+artifacts/
+cache/
+
+# Typechain output
+types/
+
+# Environment files — NEVER commit real secrets
+.env
+.env.local
+.env.production
+!.env.example
+
+# Hardhat coverage reports
+coverage/
+
+# Gas snapshot files
+.gas-snapshot
+
+# Snapshot cheatcodes output
+snapshots/
+
+# OS / Editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Hardhat Ignition deployment journal (optional, keep for auditability)
+# ignition/deployments/ — intentionally NOT gitignored; keeps deployment history
+
+# deployment.json is intentionally committed so the deployed address is public
+# do NOT add deployment.json here
